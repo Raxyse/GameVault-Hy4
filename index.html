@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="GameVault — discover, collect, and track the games you love. A curated catalog of standout titles across every genre.">
+  <meta name="theme-color" content="#060914">
+  <title>GameVault — Discover. Collect. Play.</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+  <link rel="preconnect" href="https://cdn.akamai.steamstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+</head>
+<body>
+  <div class="ambient" aria-hidden="true">
+    <span class="ambient__orb ambient__orb--one"></span>
+    <span class="ambient__orb ambient__orb--two"></span>
+    <span class="ambient__grid"></span>
+  </div>
+
+  <header class="site-header" id="top">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="GameVault home">
+        <img class="brand__mark" src="assets/images/logo.svg" alt="" width="40" height="40">
+        <span class="brand__name">Game<span>Vault</span></span>
+      </a>
+
+      <button class="nav__toggle" id="navToggle" type="button"
+              aria-expanded="false" aria-controls="navMenu" aria-label="Open navigation menu">
+        <span></span><span></span><span></span>
+      </button>
+
+      <div class="nav__menu" id="navMenu">
+        <a class="nav__link" href="#discover">Discover</a>
+        <a class="nav__link" href="#trending">Trending</a>
+        <a class="nav__link" href="#about">About</a>
+        <a class="btn btn--primary btn--sm nav__cta" href="#trending">
+          Explore Games
+          <svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10h11m-4-4 4 4-4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="discover">
+      <div class="container hero__inner">
+        <div class="hero__content">
+          <p class="eyebrow hero__eyebrow"><span class="eyebrow__dot"></span> Your next favorite game awaits</p>
+
+          <h1 class="hero__title">
+            <span class="hero__word" style="--word: 0">Discover.</span>
+            <span class="hero__word" style="--word: 1">Collect.</span>
+            <span class="hero__word gradient-text" style="--word: 2">Play.</span>
+          </h1>
+
+          <p class="hero__lead">
+            A handpicked vault of standout games. Explore new worlds, find hidden gems,
+            and keep every great title in one beautiful place.
+          </p>
+
+          <form class="search" id="searchForm" role="search">
+            <svg class="search__icon" viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+              <path d="m16 16 4 4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            <input class="search__input" id="searchInput" type="search"
+                   placeholder="Search games, genres, or years..." aria-label="Search games"
+                   autocomplete="off">
+            <button class="btn btn--primary search__button" type="submit">Search</button>
+          </form>
+
+          <div class="hero__stats" aria-label="Catalog highlights">
+            <div class="stat"><span class="stat__value">9</span><span class="stat__label">Curated picks</span></div>
+            <div class="stat"><span class="stat__value">7</span><span class="stat__label">Genres</span></div>
+            <div class="stat"><span class="stat__value">100%</span><span class="stat__label">Free to browse</span></div>
+          </div>
+        </div>
+
+        <div class="hero__visual">
+          <div class="showcase">
+            <div class="showcase__halo"></div>
+            <img class="showcase__cover" id="heroCover"
+                 src="https://cdn.akamai.steamstatic.com/steam/apps/1245620/library_600x900.jpg"
+                 alt="Featured game artwork: Elden Ring">
+            <div class="showcase__frame" aria-hidden="true"></div>
+          </div>
+
+          <div class="float-card float-card--top" aria-hidden="true">
+            <span class="float-card__icon">✦</span>
+            <span><strong>Editor's pick</strong><small>Elden Ring</small></span>
+          </div>
+          <div class="float-card float-card--bottom" aria-hidden="true">
+            <span class="float-card__icon float-card__icon--blue">◈</span>
+            <span><strong>Now trending</strong><small>9 games this week</small></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section trending" id="trending">
+      <div class="container">
+        <div class="section__head">
+          <div>
+            <p class="eyebrow"><span class="eyebrow__dot"></span> Handpicked for you</p>
+            <h2 class="section__title">Trending <span class="gradient-text">Games</span></h2>
+            <p class="section__subtitle">The titles everyone is talking about — all in one vault.</p>
+          </div>
+          <p class="result-count" id="resultCount" aria-live="polite">9 games</p>
+        </div>
+
+        <div class="filters" id="filters" role="group" aria-label="Filter games by genre">
+          <button class="filter-chip is-active" type="button" data-filter="All" aria-pressed="true">All Games</button>
+          <button class="filter-chip" type="button" data-filter="RPG" aria-pressed="false">RPG</button>
+          <button class="filter-chip" type="button" data-filter="Action" aria-pressed="false">Action</button>
+          <button class="filter-chip" type="button" data-filter="Adventure" aria-pressed="false">Adventure</button>
+          <button class="filter-chip" type="button" data-filter="Indie" aria-pressed="false">Indie</button>
+        </div>
+
+        <div class="games-grid" id="gamesGrid"></div>
+
+        <div class="empty-state" id="emptyState" hidden>
+          <span class="empty-state__icon">⌕</span>
+          <h3>No games found</h3>
+          <p>Try a different title, genre, or year.</p>
+          <button class="btn btn--ghost" type="button" id="resetFilters">Clear filters</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="about">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <a class="brand" href="#top" aria-label="GameVault home">
+          <img class="brand__mark" src="assets/images/logo.svg" alt="" width="36" height="36">
+          <span class="brand__name">Game<span>Vault</span></span>
+        </a>
+        <p>A quiet corner of the internet for people who love games.</p>
+      </div>
+      <div class="footer__links">
+        <a href="#discover">Discover</a>
+        <a href="#trending">Trending</a>
+        <a href="#top">Back to top ↑</a>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <span>© 2026 GameVault. Built for players.</span>
+      <span>Discover. Collect. Play.</span>
+    </div>
+  </footer>
+
+  <div class="modal" id="gameModal" hidden>
+    <div class="modal__backdrop" data-close-modal></div>
+    <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal__close" type="button" data-close-modal aria-label="Close details">×</button>
+      <div class="modal__art"><img id="modalCover" src="" alt=""></div>
+      <div class="modal__content">
+        <div class="modal__meta">
+          <span class="genre-pill" id="modalGenre"></span>
+          <span class="modal__year" id="modalYear"></span>
+        </div>
+        <h3 class="modal__title" id="modalTitle"></h3>
+        <p class="modal__desc" id="modalDesc"></p>
+        <dl class="modal__specs">
+          <div><dt>Developer</dt><dd id="modalDeveloper"></dd></div>
+          <div><dt>Rating</dt><dd id="modalRating"></dd></div>
+          <div><dt>Released</dt><dd id="modalReleased"></dd></div>
+        </dl>
+        <button class="btn btn--primary" type="button" data-close-modal>Back to the vault</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

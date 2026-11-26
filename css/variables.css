@@ -1,0 +1,37 @@
+/* Design tokens — change these to retheme the whole site. */
+:root {
+  /* Surfaces */
+  --bg: #060914;
+  --bg-soft: #0a1024;
+  --surface: rgba(16, 22, 48, 0.72);
+  --surface-strong: #101733;
+  --border: rgba(148, 163, 255, 0.14);
+  --border-strong: rgba(167, 139, 250, 0.45);
+
+  /* Text */
+  --text: #f4f6ff;
+  --text-muted: #9aa6ce;
+  --text-dim: #6b76a0;
+
+  /* Accents */
+  --purple: #a855f7;
+  --purple-bright: #c084fc;
+  --blue: #3b82f6;
+  --cyan: #22d3ee;
+  --accent-gradient: linear-gradient(120deg, #a855f7 0%, #6366f1 48%, #22d3ee 100%);
+  --accent-gradient-soft: linear-gradient(120deg, rgba(168, 85, 247, 0.18), rgba(34, 211, 238, 0.12));
+
+  /* Effects */
+  --shadow-glow: 0 18px 50px -20px rgba(124, 58, 237, 0.75);
+  --radius-sm: 10px;
+  --radius: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  /* Layout */
+  --container: 1200px;
+  --header-h: 76px;
+
+  --font: "Inter", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
